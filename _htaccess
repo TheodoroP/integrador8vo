@@ -1,0 +1,15 @@
+#php_flag magic_quotes_gpc On
+#AuthName "Solo usuarios autorizados"
+#AuthType Basic
+#require valid-user
+#AuthUserFile /var/www/html/claves
+
+RewriteEngine On
+#RewriteRule testpage\.html http://www.google.com [R]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,l]
+
